@@ -18,7 +18,7 @@ public interface AdminClient {
 
     @GetMapping("/employees/display")
     String getEmployeesUsingFeign();
-    
+//    
     @PostMapping("/employees/create")
     AdminBO createEmployeeUsingFeign(@RequestBody AdminBO adminBO);
     

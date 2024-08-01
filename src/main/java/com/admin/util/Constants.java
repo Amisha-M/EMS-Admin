@@ -23,5 +23,6 @@ public class Constants {
     public static final String FEIGN_CLIENT_ERROR_LOG = "Feign client error: {}";
     public static final String INVALID_EMPLOYEE_DATA_LOG = "Invalid employee data provided: {}";
 
+//    
 
 }
