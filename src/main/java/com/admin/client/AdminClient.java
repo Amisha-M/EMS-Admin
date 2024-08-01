@@ -25,6 +25,6 @@ public interface AdminClient {
     @GetMapping("/employees/id/{id}")
     AdminBO getEmployeeByIdUsingFeign(@PathVariable("id") Long id);
 
-
+//
     
 }

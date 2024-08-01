@@ -12,6 +12,8 @@ import com.admin.bo.AdminBO;
 @Component
 public class RestHelper {
 	
+	//
+	
 	private static final Logger logger = LoggerFactory.getLogger(RestHelper.class);
 
     private final RestTemplate restTemplate;

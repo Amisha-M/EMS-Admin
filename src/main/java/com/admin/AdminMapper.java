@@ -13,5 +13,5 @@ public interface AdminMapper {
 
     AdminBO toBO(AdminEntity entity);
     AdminEntity toEntity(AdminBO bo);
-	
+//	
 }

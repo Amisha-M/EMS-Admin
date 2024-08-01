@@ -59,6 +59,7 @@ public class AdminService {
 //    					HttpMethod.GET, null, new ParameterizedTypeReference<List<AdminEntity>>(){});
 //    	return response.getBody();
 //    }
+//    
     
     /*
      * USING FEIGN CLIENT
