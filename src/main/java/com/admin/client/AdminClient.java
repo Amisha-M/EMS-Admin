@@ -9,22 +9,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.admin.bo.AdminBO;
+import com.admin.entity.AdminEntity;
 
-@FeignClient(name = "employee-client", url = "${employee.api.url}")
+//@FeignClient(name = "employee-client", url = "${employee.api.url}")
+@FeignClient(name = "employee-client", url = "${ems.provider.url}")
 public interface AdminClient {
 	
 	Logger logger = LoggerFactory.getLogger(AdminClient.class);
 	
-
-    @GetMapping("/employees/display")
+	@GetMapping("/employees/display")
     String getEmployeesUsingFeign();
-//    
-    @PostMapping("/employees/create")
-    AdminBO createEmployeeUsingFeign(@RequestBody AdminBO adminBO);
-    
-    @GetMapping("/employees/id/{id}")
-    AdminBO getEmployeeByIdUsingFeign(@PathVariable("id") Long id);
 
-//
+    @PostMapping("/employees/create")
+    AdminEntity createEmployeeUsingFeign(@RequestBody AdminEntity adminEntity);
+
+    @GetMapping("/employees/id/{id}")
+    AdminEntity getEmployeeByIdUsingFeign(@PathVariable("id") Long id);
     
 }

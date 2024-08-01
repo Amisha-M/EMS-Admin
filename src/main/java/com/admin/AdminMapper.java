@@ -6,13 +6,12 @@ import org.mapstruct.factory.Mappers;
 import com.admin.bo.AdminBO;
 import com.admin.entity.AdminEntity;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface AdminMapper {
 
 	AdminMapper INSTANCE = Mappers.getMapper(AdminMapper.class);
 
-    AdminBO toBO(AdminEntity entity);
-    AdminEntity toEntity(AdminBO bo);
-//	
-//    
+    AdminEntity toEntity(AdminBO adminBO);
+    AdminBO toBO(AdminEntity adminEntity);
+    
 }

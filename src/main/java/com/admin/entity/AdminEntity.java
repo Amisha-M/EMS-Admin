@@ -11,7 +11,7 @@ public class AdminEntity {
 
 	private Long id;
     private String name;
-    private String role;
+    private String position;
     private Long salary;
 	
 }

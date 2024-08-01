@@ -62,23 +62,7 @@ public class AdminController {
             return ResponseEntity.notFound().build();
         }
     }
-//	@GetMapping("/rest")
-//	public List<AdminEntity> showEmp() {
-//        List<AdminEntity> emp = adminService.getAllEmp();
-//        if (emp == null) {
-//            emp = new ArrayList<>();
-//        }
-//        return emp; // Spring will automatically convert this list to JSON
-//    }
 
-
-//    @GetMapping("/feign")
-//    public String getEmployeesUsingFeign() {
-//        logger.info("GET /client/feign");
-//        return adminService.getEmployeesUsingFeign();
-//    }
-//    
-//    
     
     /*
      * USING FEIGN CLIENT
@@ -102,7 +86,7 @@ public class AdminController {
     public ResponseEntity<AdminBO> createEmployeeUsingFeign(@RequestBody AdminBO adminBO) {
         logger.info(Constants.CREATE_EMPLOYEE_FEIGN_REQUEST_LOG, adminBO);
         try {
-            AdminBO createdEmployee = adminService.createEmployee(adminBO);
+            AdminBO createdEmployee = adminService.createEmployeeUsingFeign(adminBO);
             return ResponseEntity.status(201).body(createdEmployee);
         } catch (Exception e) {
             logger.error(Constants.SERVICE_ERROR_LOG, e.getMessage(), e);
@@ -114,7 +98,7 @@ public class AdminController {
     public ResponseEntity<AdminBO> getEmployeeByIdUsingFeign(@PathVariable("id") Long id) {
         logger.info(Constants.GET_EMPLOYEE_BY_ID_FEIGN_REQUEST_LOG, id);
         try {
-            AdminBO employee = adminService.getEmployeeById(id);
+            AdminBO employee = adminService.getEmployeeByIdUsingFeign(id);
             if (employee != null) {
                 return ResponseEntity.ok(employee);
             } else {
