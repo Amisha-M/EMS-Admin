@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.admin.bo.AdminBO;
 import com.admin.entity.AdminEntity;
-import com.admin.service.AdminService;
+import com.admin.service.AdminServiceImpl;
 import com.admin.util.Constants;
 
 import jakarta.validation.Valid;
@@ -32,7 +32,7 @@ public class AdminController {
     private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	
 	@Autowired
-    private AdminService adminService;
+    private AdminServiceImpl adminService;
 
     @GetMapping("/rest")
     public String getEmployeesUsingRestTemplate() {

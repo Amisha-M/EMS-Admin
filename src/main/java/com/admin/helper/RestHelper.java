@@ -33,30 +33,7 @@ public class RestHelper {
         ResponseEntity<String> response = restTemplate.getForEntity(baseUrl + "/employees/display", String.class);
         return response.getBody();
     }
-    
-//    public AdminBO createEmployee(AdminBO adminBO) {
-//        logger.info("Calling POST {} with body: {}", baseUrl + "/employees/create", adminBO);
-//        try {
-//            ResponseEntity<AdminBO> response = restTemplate.postForEntity(baseUrl + "/employees/create", adminBO, AdminBO.class);
-//            logger.info("Response received for POST {}: Status={}, Body={}", baseUrl + "/employees/create", response.getStatusCode(), response.getBody());
-//            return response.getBody();
-//        } catch (Exception e) {
-//            logger.error("Error occurred while calling POST {}: {}", baseUrl + "/employees/create", e.getMessage(), e);
-//            throw e;
-//        }
-//    }
-//
-//    public AdminBO getEmployeeById(Long id) {
-//        logger.info("Calling GET {} with ID: {}", baseUrl + "/employees/id/" + id, id);
-//        try {
-//            ResponseEntity<AdminBO> response = restTemplate.getForEntity(baseUrl + "/employees/id/" + id, AdminBO.class);
-//            logger.info("Response received for GET {}: Status={}, Body={}", baseUrl + "/employees/id/" + id, response.getStatusCode(), response.getBody());
-//            return response.getBody();
-//        } catch (Exception e) {
-//            logger.error("Error occurred while calling GET {}: {}", baseUrl + "/employees/id/" + id, e.getMessage(), e);
-//            throw e;
-//        }
-//    }
+
     
     public AdminEntity createEmployee(AdminEntity adminEntity) {
         logger.info("Calling POST {} with body: {}", baseUrl + "/employees/create", adminEntity);
@@ -71,13 +48,15 @@ public class RestHelper {
     }
 
     public AdminEntity getEmployeeById(Long id) {
-        logger.info("Calling GET {} with ID: {}", baseUrl + "/employees/id/" + id, id);
+        logger.info("Calling GET {} with ID: {}", baseUrl + "/employees/id/{id}" , id);
+//        String url = baseUrl+"/employees/id/{id}";
+//        return restTemplate.getForObject(url, AdminEntity.class,id);
         try {
-            ResponseEntity<AdminEntity> response = restTemplate.getForEntity(baseUrl + "/employees/id/" + id, AdminEntity.class);
-            logger.info("Response received for GET {}: Status={}, Body={}", baseUrl + "/employees/id/" + id, response.getStatusCode(), response.getBody());
+            ResponseEntity<AdminEntity> response = restTemplate.getForEntity(baseUrl + "/employees/id/{id}" , AdminEntity.class);
+            logger.info("Response received for GET {}: Status={}, Body={}", baseUrl + "/employees/id/{id}" , response.getStatusCode(), response.getBody());
             return response.getBody();
         } catch (Exception e) {
-            logger.error("Error occurred while calling GET {}: {}", baseUrl + "/employees/id/" + id, e.getMessage(), e);
+            logger.error("Error occurred while calling GET {}: {}", baseUrl + "/employees/id/{id}" , e.getMessage(), e);
             throw e;
         }
     }
