@@ -5,15 +5,18 @@ import com.admin.service.AdminService;
 import com.admin.service.AdminServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 public class AdminControllerTest {
 
 	@Mock
@@ -40,7 +43,7 @@ public class AdminControllerTest {
 
     @Test
     void testCreateEmployee() {
-        AdminBO adminBO = new AdminBO(1L, "Jane Doe", "Manager", 60000L);
+        AdminBO adminBO = new AdminBO(1L, "Amar Singh", "Software Eng", 50000L);
         when(adminService.createEmployeeUsingRestTemplate(any(AdminBO.class))).thenReturn(adminBO);
 
         ResponseEntity<AdminBO> response = adminController.createEmployee(adminBO);
@@ -52,7 +55,7 @@ public class AdminControllerTest {
 
     @Test
     void testGetEmployeeById() {
-        AdminBO adminBO = new AdminBO(1L, "Jane Doe", "Manager", 60000L);
+        AdminBO adminBO = new AdminBO(1L, "Amar Singh", "Software Eng", 50000L);
         when(adminService.getEmployeeByIdUsingRestTemplate(anyLong())).thenReturn(adminBO);
 
         ResponseEntity<AdminBO> response = adminController.getEmployeeById(1L);
@@ -87,7 +90,7 @@ public class AdminControllerTest {
 
     @Test
     void testCreateEmployeeUsingFeign() {
-        AdminBO adminBO = new AdminBO(1L, "Jane Doe", "Manager", 60000L);
+        AdminBO adminBO = new AdminBO(1L, "Amar Singh", "Software Eng", 50000L);
         when(adminService.createEmployeeUsingFeign(any(AdminBO.class))).thenReturn(adminBO);
 
         ResponseEntity<AdminBO> response = adminController.createEmployeeUsingFeign(adminBO);
@@ -99,7 +102,7 @@ public class AdminControllerTest {
 
     @Test
     void testGetEmployeeByIdUsingFeign() {
-        AdminBO adminBO = new AdminBO(1L, "Jane Doe", "Manager", 60000L);
+        AdminBO adminBO = new AdminBO(1L, "Amar Singh", "Software Eng", 50000L);
         when(adminService.getEmployeeByIdUsingFeign(anyLong())).thenReturn(adminBO);
 
         ResponseEntity<AdminBO> response = adminController.getEmployeeByIdUsingFeign(1L);

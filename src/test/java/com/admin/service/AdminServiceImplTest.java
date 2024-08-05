@@ -7,13 +7,16 @@ import com.admin.entity.AdminEntity;
 import com.admin.helper.RestHelper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 public class AdminServiceImplTest {
 
     @Mock
@@ -48,8 +51,8 @@ public class AdminServiceImplTest {
 
     @Test
     void testCreateEmployeeUsingRestTemplate() {
-        AdminBO adminBO = new AdminBO(1L, "Jane Doe", "Manager", 60000L);
-        AdminEntity adminEntity = new AdminEntity(1L, "Jane Doe", "Manager", 60000L);
+        AdminBO adminBO = new AdminBO(1L, "Amar Singh", "Software Eng", 40000L);
+        AdminEntity adminEntity = new AdminEntity(1L, "Amar Singh", "Software Eng", 40000L);
         when(adminMapper.toEntity(any(AdminBO.class))).thenReturn(adminEntity);
         when(restHelper.createEmployee(any(AdminEntity.class))).thenReturn(adminEntity);
         when(adminMapper.toBO(any(AdminEntity.class))).thenReturn(adminBO);
@@ -64,8 +67,8 @@ public class AdminServiceImplTest {
 
     @Test
     void testGetEmployeeByIdUsingRestTemplate() {
-        AdminBO adminBO = new AdminBO(1L, "Jane Doe", "Manager", 60000L);
-        AdminEntity adminEntity = new AdminEntity(1L, "Jane Doe", "Manager", 60000L);
+        AdminBO adminBO = new AdminBO(1L, "Amar Singh", "Software Eng", 40000L);
+        AdminEntity adminEntity = new AdminEntity(1L, "Amar Singh", "Software Eng", 40000L);
         when(restHelper.getEmployeeById(anyLong())).thenReturn(adminEntity);
         when(adminMapper.toBO(any(AdminEntity.class))).thenReturn(adminBO);
 
@@ -91,8 +94,8 @@ public class AdminServiceImplTest {
 
     @Test
     void testCreateEmployeeUsingFeign() {
-        AdminBO adminBO = new AdminBO(1L, "Jane Doe", "Manager", 60000L);
-        AdminEntity adminEntity = new AdminEntity(1L, "Jane Doe", "Manager", 60000L);
+        AdminBO adminBO = new AdminBO(1L, "Amar Singh", "Software Eng", 40000L);
+        AdminEntity adminEntity = new AdminEntity(1L, "Amar Singh", "Software Eng", 40000L);
         when(adminMapper.toEntity(any(AdminBO.class))).thenReturn(adminEntity);
         when(adminClient.createEmployeeUsingFeign(any(AdminEntity.class))).thenReturn(adminEntity);
         when(adminMapper.toBO(any(AdminEntity.class))).thenReturn(adminBO);
@@ -107,8 +110,8 @@ public class AdminServiceImplTest {
 
     @Test
     void testGetEmployeeByIdUsingFeign() {
-        AdminBO adminBO = new AdminBO(1L, "Jane Doe", "Manager", 60000L);
-        AdminEntity adminEntity = new AdminEntity(1L, "Jane Doe", "Manager", 60000L);
+        AdminBO adminBO = new AdminBO(1L, "Amar Singh", "Software Eng", 40000L);
+        AdminEntity adminEntity = new AdminEntity(1L, "Amar Singh", "Software Eng", 40000L);
         when(adminClient.getEmployeeByIdUsingFeign(anyLong())).thenReturn(adminEntity);
         when(adminMapper.toBO(any(AdminEntity.class))).thenReturn(adminBO);
 
