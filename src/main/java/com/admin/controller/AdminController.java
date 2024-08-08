@@ -3,6 +3,7 @@ package com.admin.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class AdminController {
         logger.info(Constants.GET_EMPLOYEES_REST_LOG);
         return adminService.getEmployeesUsingRestTemplate();
     }
-	
+
     @PostMapping("rest/employees")
     public ResponseEntity<AdminBO> createEmployee(@RequestBody @Valid AdminBO adminBO) {
         logger.info(Constants.CREATE_EMPLOYEE_REQUEST_LOG, adminBO);
